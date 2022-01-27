@@ -8,11 +8,6 @@ class Stack_imp():
         self.stack = [None] * self.size
         self.top = -1
     
-    def dummy(self):
-        print(self.size)
-        self.stack.append(10)
-        self.top += 1
-        print(self.stack, self.top)
         
     def push_item(self, item):
         if(not (self.stack_overflow())):
@@ -24,7 +19,6 @@ class Stack_imp():
             print("Element popped = ", self.stack[self.top])
             self.top -= 1
             self.display()
-                  
 
     def stack_overflow(self):
         self.top += 1
