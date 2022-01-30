@@ -114,12 +114,78 @@ def replace_substring(s, old_ss, new_ss):
         else:
              search_start += 1
     print("New string ", s)
-            
 
-s = "catdogranpig"
+'''to convert all the characters to uppercase'''
+def to_uppercase(s):
+    new_str = ""
+    for i in s:
+        asc = ord(i)
+        if(asc>= 97 and asc<= 122):
+            asc -= 32
+            new_str += chr(asc)
+        else:
+            new_str += i            
+    print("Upper case string is ", new_str)
+
+'''to check is all the characters in the string are in uppercase'''
+def is_uppercase(s):
+    new_str = ""
+    for i in s:
+        asc = ord(i)
+        if(asc>= 97 and asc<= 122):
+            print("All the characters in the string is not in UpperCase")
+            break
+    else:
+        print("The string is in UpperCase")
+
+'''to convert all the characters to lowercase'''
+def to_lowercase(s):
+    new_str = ""
+    for i in s:
+        asc = ord(i)
+        if(asc>= 65 and asc<= 90):
+            asc += 32
+            new_str += chr(asc)
+        else:
+            new_str += i            
+    print("Lower case string is ", new_str)
+
+'''to check is all the characters in the string are in lowercase'''
+def is_lowercase(s):
+    new_str = ""
+    for i in s:
+        asc = ord(i)
+        if(asc>= 65 and asc<= 90):
+            print("All the characters in the string is not in LowerCase")
+            break
+    else:
+        print("The string is in LowerCase")
+
+
+'''swapcase'''
+def swap_case(s):
+    new_str = ""
+    for i in s:
+        asc = ord(i)
+        if(asc>= 65 and asc<= 90):
+            asc += 32
+            new_str += chr(asc)
+        elif(asc>= 97 and asc<= 122):
+            asc -= 32
+            new_str += chr(asc)
+        else:
+            new_str += i
+    print("New string is ", new_str)         
+
+s = "catdogran23GPA$pigza"
+q = "RMA123"
+r = "SPA"
 p = "rcranpitran"
 empty = ""
-replace_substring(empty, "ran", "porting")
+#swap_case(s)
+#to_lowercase(empty)
+#to_uppercase(s)
+#replace_substring(empty, "ran", "porting")
 #extended_slicing(s, start = 12, end = 5, stride = 2)
 #slicing("spam", end = -2)
 #concat(empty, "hello")
