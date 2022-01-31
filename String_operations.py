@@ -35,7 +35,7 @@ def find_substring(s, ss):
     else:
         print("Substring not found")
 
-'''Convert to list'''
+'''to convert a given string into list'''
 def convert_to_list(s):
     ch = []
     for i in (s):
@@ -44,7 +44,7 @@ def convert_to_list(s):
     convert_to_string(ch)
     return ch
 
-'''Convert list to string'''
+'''Convert given list to string'''
 def convert_to_string(li):
     s = ""
     for i in li:
@@ -59,7 +59,7 @@ def concat(s, s1):
     print("The new concatenated string is ", s)
   
 
-'''Slicing'''
+'''Slicing of given string'''
 def slicing(s, start=0, end=None):
     if end is None:
         end = len(s)
@@ -91,7 +91,7 @@ def extended_slicing(s, start = None, end =  None, stride = None):
     print("New string is ", ss)
         
 
-'''Replace all  with substring'''
+'''Replace given string  with all occurence of the matchingsubstring'''
 def replace_substring(s, old_ss, new_ss):
     length = len(s)- len(old_ss) +1
     search_start = 0
@@ -175,14 +175,96 @@ def swap_case(s):
             new_str += chr(asc)
         else:
             new_str += i
-    print("New string is ", new_str)         
+    print("New string is ", new_str)
 
-s = "catdogran23GPA$pigza"
-q = "RMA123"
+    
+'''To check if the given string is alphanumeric'''
+def is_alpha(s):
+    for i in s:
+        asc = ord(i)
+        if(not((asc >=65 and asc <= 90) or (asc >=97 and asc <= 122) or (asc >=48 and asc <= 57))):
+            print("The given string is not alphanumeric ")
+            break
+    else:
+        print("The given string is alphanumeric")
+    
+
+'''To check if the given string is decimal'''
+def is_decimal(s):
+    if(s%1 == 0):
+        print("Not decimal")
+    else:
+        print("The given number is decimal")
+
+'''To check if the given string is digit'''
+def is_digit(s):
+    for i in s:
+        asc = ord(i)
+        if(not(asc >=48 and asc <= 57)):
+            print("The given string is not numeric ")
+            break
+    else:
+        print("The given string is numeric")
+
+'''To check if the string is starts with with a given string'''
+def startswith(s, ss):
+    if (len(ss) > len(s)):
+        print("The given string does not start with ", ss)
+        exit()
+    for i in range(len(ss)):
+        if(s[i] != ss[i]):
+            print("The given string does not start with ", ss)
+            break
+    else:
+        print("The given string starts with ", ss)
+  
+
+'''To check if the string is ends with with a given string'''
+def endswith(s, ss):
+    if (len(ss) > len(s)):
+        print("The given string does not end with ", ss)
+        exit()
+    length = len(s) - len(ss)
+    for i in range(len(ss)):
+        if(ss[i] != s[length + i]):
+            print("The given string does not end with ", ss)
+            break
+    else:
+        print("The given string end with ", ss)
+
+'''To check is the string begins with whitespaces'''
+def l_strip(s):
+    if((s[0]) == ' '):
+        print("The given string starts with whitespaces")
+    else:
+        print("The given string does not start with whitespaces")
+
+'''To split the string based on the separator'''
+def split(s, separator):
+    lst = []
+    start = 0
+    s.rstrip()
+    for i in range(len(s)):
+        if(s[i] == separator and i!=len(s)-1):
+            lst.append(s[start:i])
+            start = i+1
+    lst.append(s[start:len(s)])
+    print("The new string is ", lst)
+
+
+s = "   catdogran23GPA$pigza"
+q = "RMA123zaZA09"
 r = "SPA"
 p = "rcranpitran"
 empty = ""
-#swap_case(s)
+split("Hello.how.are you", ".")
+#r_strip(q)
+#endswith(s, "a$pigza")
+#startswith(s, "cato")
+#is_decimal(19.03)
+#is_digit("12309")
+#is_alpha(s)
+#swap_case(q)
 #to_lowercase(empty)
 #to_uppercase(s)
 #replace_substring(empty, "ran", "porting")
