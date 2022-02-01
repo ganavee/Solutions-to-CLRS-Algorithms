@@ -1,11 +1,11 @@
 ''''Show how to implement a queue using two stacks.'''
 
-class Queue():
+#pop costly method push O(1) and pop O(n)
+class Queue1():
     def __init__(self):
         self.stack1 = []
         self.stack2 = []
         self.current_stack = 1
-        pass
     
     def enqueue(self, item):
         if(self.current_stack == 1):
@@ -29,8 +29,36 @@ class Queue():
                 for i in range(length, 0, -1):
                     self.enqueue(self.stack2.pop())
                     self.top2 -= 1
+                    
+#pop costly method push O(1) and pop O(n)
+class Queue2():
+    def __init__(self):
+        self.stack1 = []
+        self.stack2 = []
+        self.current_stack = 1
+    def enqueue(self, item):
+        if(self.current_stack == 1):
+            self.stack1.append(item)
+        else:
+            self.stack2.append(item)
 
-obj = Queue()
+    def dequeue(self):
+        if(len(self.stack2) == 0):
+            length = len(self.stack1)
+            if(length == 0):
+                print("Stack empty")
+            #Move all the elemens from Stack1 to Stack2
+            else:
+                self.current_stack = 2
+                for i in range(length, 1, -1):
+                    self.enqueue(self.stack1.pop())
+                print("Popped Element is ", self.stack1.pop())
+                self.current_stack = 1
+                    
+        else:
+            print("Popped Element is ", self.stack2.pop())
+
+obj = Queue2()
 obj.enqueue(10)
 obj.dequeue()
 obj.dequeue()
