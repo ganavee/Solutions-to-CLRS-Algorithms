@@ -1,5 +1,6 @@
 '''To implement a stack using two queues'''
 
+#Push = O(1) pop = O(n)
 class Stack():
     def __init__(self):
         self.queue1 = []
