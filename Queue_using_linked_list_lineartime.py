@@ -37,17 +37,14 @@ class LinkedList:
 obj = LinkedList()
 obj.enqueue(25)
 obj.display()
-
 obj.enqueue(30)
 obj.display()
 obj.dequeue()
 obj.display()
 obj.dequeue()
 obj.display()
-
 obj.dequeue()
 obj.display()
-
 obj.enqueue(55)
 obj.display()
 
