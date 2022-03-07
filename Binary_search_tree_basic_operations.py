@@ -28,21 +28,24 @@ class BinarySearchTree:
 
     def search_data(self, data, curr):
         if(curr == None):
-            print("Element not found")
+            return None
         elif(data == curr.data):
-            print("Element found")
+            return True
         elif(data < curr.data):
-            self.search_data(data, curr.left)
+            return self.search_data(data, curr.left)
         elif(data >= curr.data):
-            self.search_data(data, curr.right)
+            return self.search_data(data, curr.right)
         else:
-            print("Element not found")
+            return None
 
     def search(self, data):
         if(self.root == None):
             print("No nodes present hence the element not present")
             return
-        self.search_data(data, self.root)
+        if(self.search_data(data, self.root)):
+            print("Element found")
+        else:
+             print("Element not found")
         
 
     def display(self):
