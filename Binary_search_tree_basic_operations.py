@@ -58,6 +58,22 @@ class BinarySearchTree:
         if(curr == None):
             print("Element {0} Not Found".format(data))
 
+    def minimum(self):
+        curr = self.root
+        while(curr):
+            if(curr.left == None):
+                print("Minimum element is ", curr.data)
+                break
+            curr = curr.left
+
+    def maximum(self):
+        curr = self.root
+        while(curr):
+            if(curr.right == None):
+                print("Maximum element is ", curr.data)
+                break
+            curr = curr.right
+
     def display(self):
         self.display_data(self.root)
         print()
@@ -85,22 +101,14 @@ obj.insert(3)
 obj.display()
 obj.insert(4)
 obj.display()
+obj.insert(10)
+obj.display()
 obj.insert(6)
 obj.display()
+obj.minimum()
+obj.maximum()
 obj.search_iterative(1)
-obj.search_iterative(2)
-obj.search_iterative(3)
-obj.search_iterative(4)
-obj.search_iterative(5)
-obj.search_iterative(6)
-obj.search_iterative(7)
 obj.search_iterative(8)
-obj.search_recursive(1)
 obj.search_recursive(2)
-obj.search_recursive(3)
-obj.search_recursive(4)
-obj.search_recursive(5)
-obj.search_recursive(6)
-obj.search_recursive(7)
 obj.search_recursive(8)
-
+'''
