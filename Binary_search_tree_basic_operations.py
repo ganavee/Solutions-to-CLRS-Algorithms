@@ -26,27 +26,37 @@ class BinarySearchTree:
             else:
                 self.insert_data(data, curr.right)
 
-    def search_data(self, data, curr):
+    def search_data_recursive(self, data, curr):
         if(curr == None):
             return None
         elif(data == curr.data):
             return True
         elif(data < curr.data):
-            return self.search_data(data, curr.left)
+            return self.search_data_recursive(data, curr.left)
         elif(data >= curr.data):
-            return self.search_data(data, curr.right)
-        else:
-            return None
+            return self.search_data_recursive(data, curr.right)
 
-    def search(self, data):
+    def search_recursive(self, data):
         if(self.root == None):
-            print("No nodes present hence the element not present")
+            print("No nodes present hence the element  {0} not present".format(data))
             return
-        if(self.search_data(data, self.root)):
-            print("Element found")
+        if(self.search_data_recursive(data, self.root)):
+            print("Element {0} Found".format(data))
         else:
-             print("Element not found")
-        
+             print("Element {0} Not Found".format(data))
+
+    def search_iterative(self, data):
+        curr = self.root
+        while(curr):
+            if(curr.data == data):
+                print("Element {0} Found".format(data))
+                break
+            elif(data < curr.data):
+                curr = curr.left
+            else:
+                curr = curr.right
+        if(curr == None):
+            print("Element {0} Not Found".format(data))
 
     def display(self):
         self.display_data(self.root)
@@ -77,11 +87,20 @@ obj.insert(4)
 obj.display()
 obj.insert(6)
 obj.display()
-obj.search(1)
-obj.search(2)
-obj.search(3)
-obj.search(4)
-obj.search(5)
-obj.search(6)
-obj.search(7)
-obj.search(8)
+obj.search_iterative(1)
+obj.search_iterative(2)
+obj.search_iterative(3)
+obj.search_iterative(4)
+obj.search_iterative(5)
+obj.search_iterative(6)
+obj.search_iterative(7)
+obj.search_iterative(8)
+obj.search_recursive(1)
+obj.search_recursive(2)
+obj.search_recursive(3)
+obj.search_recursive(4)
+obj.search_recursive(5)
+obj.search_recursive(6)
+obj.search_recursive(7)
+obj.search_recursive(8)
+
