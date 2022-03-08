@@ -74,37 +74,80 @@ class BinarySearchTree:
                 break
             curr = curr.right
 
-    def display(self):
-        self.display_data(self.root)
+
+    def display_inorder(self):
+        print("In-Order Traversal")
+        self.display_data_inorder(self.root)
         print()
     
-    def display_data(self, curr):
+    def display_data_inorder(self, curr):
         if(curr == None):
             return
-        self.display_data(curr.left)
+        self.display_data_inorder(curr.left)
         print("{0}-->".format(curr.data), end = "")
-        self.display_data(curr.right)
+        self.display_data_inorder(curr.right)  
 
+    def display_postorder(self):
+        print("Post-Order Traversal")
+        self.display_data_postorder(self.root)
+        print()
+
+    def display_data_postorder(self, curr):
+        if(curr == None):
+            return None
+        self.display_data_postorder(curr.left)
+        self.display_data_postorder(curr.right)
+        print("{0}-->".format(curr.data), end = "")
+
+    def display_preorder(self):
+        print("Pre-Order Traversal")
+        self.display_data_preorder(self.root)
+        print()
+
+    def display_data_preorder(self, curr):
+        if(curr ==  None):
+            return None
+        print("{0}-->".format(curr.data), end = "")
+        self.display_data_preorder(curr.left)
+        self.display_data_preorder(curr.right)
+
+
+
+
+
+
+
+
+        
 
 obj = BinarySearchTree()
-obj.insert(6)
-obj.display()
-obj.insert(2)
-obj.display()
-obj.insert(7)
-obj.display()
-obj.insert(5)
-obj.display()
-obj.insert(1)
-obj.display()
-obj.insert(3)
-obj.display()
-obj.insert(4)
-obj.display()
+obj.insert(16)
+obj.display_inorder()
 obj.insert(10)
-obj.display()
-obj.insert(6)
-obj.display()
+obj.display_inorder()
+obj.insert(15)
+obj.display_inorder()
+obj.insert(21)
+obj.display_inorder()
+obj.insert(7)
+obj.display_inorder()
+obj.insert(23)
+obj.display_inorder()
+obj.insert(27)
+obj.display_inorder()
+obj.insert(13)
+obj.display_inorder()
+obj.insert(14)
+obj.display_inorder()
+obj.insert(18)
+obj.display_inorder()
+obj.insert(25)
+obj.display_inorder()
+obj.insert(17)
+obj.display_inorder()
+obj.display_postorder()
+obj.display_preorder()
+'''
 obj.minimum()
 obj.maximum()
 obj.search_iterative(1)
