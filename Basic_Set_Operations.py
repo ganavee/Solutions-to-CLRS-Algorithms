@@ -1,6 +1,7 @@
-d = [15, 25, 35, 45, 5, 5, 25]
-a = [45, 5, 65, 75, 85, 75,45]
-b = [1, 2, 3]
+a = [15, 25, 35, 45, 5, 5, 25]
+b = [45, 5, 65, 75, 85, 75,45]
+a = [1, 2, 3]
+b = [1, 5, 7, 8, 2, 3, 10]
 
 def intersection_using_dic():
     D1 = {}
@@ -64,8 +65,33 @@ def disjoint():
     else:
         print("Not Disjoint Sets")
 
+def subset():
+    D1 = {}
+    for i in b:
+        D1[i] = 1
+    for i in a:
+        if i not in D1:
+            print("A not subset of B")
+            break
+    else:
+        print("A is a subset of B")
+
+def superset():
+    D1 = {}
+    for i in b:
+        D1[i] = 1
+    for i in a:
+        if i not in D1:
+            print("B is not superset of A")
+            break
+    else:
+        if(len(D1.keys()) >= len(a)):
+            print("B is superset of A")
+
 intersection_using_dic()
 union_using_dic()
 difference()
 symmetric_difference()
 disjoint()
+subset()
+superset()
