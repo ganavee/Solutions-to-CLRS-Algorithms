@@ -1,5 +1,6 @@
-b = [15, 25, 35, 45, 5, 5, 25]
+d = [15, 25, 35, 45, 5, 5, 25]
 a = [45, 5, 65, 75, 85, 75,45]
+b = [1, 2, 3]
 
 def intersection_using_dic():
     D1 = {}
@@ -13,6 +14,7 @@ def intersection_using_dic():
         if i in D2:
             c.append(i)
     print("The intersection of two lists is ", c)
+    return c
 
 def union_using_dic():
     D = {}
@@ -56,7 +58,14 @@ def symmetric_difference():
             c.append(i)
     print("Symmetric Difference is ", c)
 
+def disjoint():
+    if(intersection_using_dic() == []):
+        print("Disjoint Sets")
+    else:
+        print("Not Disjoint Sets")
+
 intersection_using_dic()
 union_using_dic()
 difference()
 symmetric_difference()
+disjoint()
