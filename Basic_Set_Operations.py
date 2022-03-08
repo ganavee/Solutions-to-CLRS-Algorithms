@@ -1,7 +1,7 @@
-a = [1, 2, 3, 4, 5]
-b = [4, 5, 6, 7, 8]
+a = [15, 25, 35, 45, 5]
+b = [45, 5, 65, 75, 85]
 
-def union_using_dic():
+def intersection_using_dic():
     D = {}
     for i in a:
         D[i] = 1
@@ -11,4 +11,6 @@ def union_using_dic():
             union.append(i)
     print(union)
 
-union_using_dic()
+def 
+
+intersection_using_dic()
