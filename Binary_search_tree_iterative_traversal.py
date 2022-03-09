@@ -43,6 +43,19 @@ class Binary_Search_Tree:
     def display_inorder_iterative(self):
         print("Iterative In-Order Traversal")
         curr = self.root
+        stack = []
+        #using one loop
+        while True:
+            if(curr != None):
+                stack.append(curr)
+                curr = curr.left
+            elif(len(stack)):
+                curr = stack.pop()
+                print("{0}-->".format(curr.data), end = "")
+                curr = curr.right
+                
+        #using two loops
+        '''
         stack = [None]
         while(len(stack) != 0 or curr):
             #print("length of stack ", len(stack))
@@ -61,6 +74,7 @@ class Binary_Search_Tree:
                     print("{0}-->".format(curr.data), end = "")
             if(curr and curr.right != None):
                 curr = curr.right
+        '''
             
         
 
