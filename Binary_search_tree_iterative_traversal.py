@@ -12,7 +12,7 @@ class Binary_Search_Tree:
     def insert_iterative(self, data):
         if(self.root == None):
             self.root = Node(data)
-            self.display_inorder_recursive()
+            self.display_inorder_iterative()
             return
         curr = self.root
         while(curr):
@@ -27,19 +27,24 @@ class Binary_Search_Tree:
             prev.left = Node(data)
         else:
             prev.right = Node(data)
-        self.display_inorder_recursive()
+        self.display_inorder_iterative()
+
+    def display_preorder_iterative(self):
+        print("Iteratice Pre-Order Traversal")
+        stack = [None]
+        curr = self.root
+        while(curr != None and len(stack) != 0):
+            if(curr.visited == 0):
+                print("{0}-->".format(curr.data), end = "")
+                curr.visited = 1
+                stack.append(curr)
+            if(curr.left != None and curr.left.visited == 0):
+                curr = curr.left
+            elif(curr.right != None and curr.right.visited == 0):
+                curr = curr.right
+            else:
+                curr = stack.pop()
         
-    def display_inorder_recursive(self):
-        #print("In-Order Traversal")
-        self.display_data_inorder_recursive(self.root)
-        #print()
-    
-    def display_data_inorder_recursive(self, curr):
-        if(curr == None):
-            return
-        self.display_data_inorder_recursive(curr.left)
-        #print("{0}-->".format(curr.data), end = "")
-        self.display_data_inorder_recursive(curr.right)
 
     def display_postorder_iterative(self):
         print("Iterative Post-Order Traversal")
@@ -56,10 +61,26 @@ class Binary_Search_Tree:
                 print("{0}-->".format(curr.data), end = "")
                 curr.visited = 1
                 curr = stack.pop()
-        #Go till left most
-        #Add the right subtree of the top element
-        #Pop the topmost element(which will be the centre node)
+        print()
 
+    def initialising_visit(self):
+        print("Iterative In-Order Traversal")
+        curr = self.root
+        stack = []
+        #using one loop
+        while True:
+            if(curr != None):
+                stack.append(curr)
+                curr = curr.left
+            elif(len(stack)):
+                curr = stack.pop()
+                #print("{0}-->".format(curr.data), end = "")
+                curr.visited = 0
+                curr = curr.right
+            else:
+                break
+        print()
+        
     def display_inorder_iterative(self):
         print("Iterative In-Order Traversal")
         curr = self.root
@@ -75,6 +96,7 @@ class Binary_Search_Tree:
                 curr = curr.right
             else:
                 break
+        print()
                 
         #using two loops
         '''
@@ -115,7 +137,7 @@ obj.insert_iterative(25)
 obj.insert_iterative(17)
 obj.insert_iterative(8)
 obj.display_inorder_iterative()
-print()
 obj.display_postorder_iterative()
-print()
+obj.initialising_visit()
+obj.display_preorder_iterative()
 
