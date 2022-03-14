@@ -171,7 +171,10 @@ class Binary_Search_Tree:
                 prev = curr
                 curr = curr.right
             else:
+                print("Predecessor of {0} is Not Present".format(elem))
                 break
+
+        
         
 
 obj = Binary_Search_Tree()
@@ -195,5 +198,5 @@ obj.display_preorder_iterative()
 obj.minimum()
 obj.maximum()
 obj.search_iterative(16)
-obj.predecessor(7)
+obj.predecessor(11)
 
