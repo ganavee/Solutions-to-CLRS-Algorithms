@@ -3,6 +3,7 @@ class Node:
         self.data = data
         self.left = None
         self.right = None
+        self.visited = 0
 
 class Binary_Search_Tree:
     def __init__(self):
@@ -40,6 +41,25 @@ class Binary_Search_Tree:
         #print("{0}-->".format(curr.data), end = "")
         self.display_data_inorder_recursive(curr.right)
 
+    def display_postorder_iterative(self):
+        print("Iterative Post-Order Traversal")
+        stack = [None]
+        curr = self.root
+        while(curr != None or len(stack) != 0):
+            while(curr.left != None and curr.left.visited == 0):
+                stack.append(curr)
+                curr = curr.left
+            if(curr.right != None and curr.right.visited == 0):
+                stack.append(curr)
+                curr = curr.right
+            else:
+                print("{0}-->".format(curr.data), end = "")
+                curr.visited = 1
+                curr = stack.pop()
+        #Go till left most
+        #Add the right subtree of the top element
+        #Pop the topmost element(which will be the centre node)
+
     def display_inorder_iterative(self):
         print("Iterative In-Order Traversal")
         curr = self.root
@@ -53,6 +73,8 @@ class Binary_Search_Tree:
                 curr = stack.pop()
                 print("{0}-->".format(curr.data), end = "")
                 curr = curr.right
+            else:
+                break
                 
         #using two loops
         '''
@@ -91,5 +113,9 @@ obj.insert_iterative(13)
 obj.insert_iterative(14)
 obj.insert_iterative(25)
 obj.insert_iterative(17)
+obj.insert_iterative(8)
 obj.display_inorder_iterative()
+print()
+obj.display_postorder_iterative()
+print()
 
