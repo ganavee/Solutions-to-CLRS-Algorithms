@@ -8,23 +8,23 @@ class BinarySearchTree:
     def __init__(self):
         self.root = None
 
-    def insert(self, data):
+    def insert_recursive(self, data):
         if(self.root == None):
             self.root = Node(data)
             return
-        self.insert_data(data, self.root)
+        self.insert_data_recursive(data, self.root)
 
-    def insert_data(self, data, curr):
+    def insert_data_recursive(self, data, curr):
         if(data < curr.data):
             if(curr.left is None):
                 curr.left = Node(data)
             else:
-                self.insert_data(data, curr.left)
+                self.insert_data_recursive(data, curr.left)
         else:
             if(curr.right is None):
                 curr.right = Node(data)
             else:
-                self.insert_data(data, curr.right)
+                self.insert_data_recursive(data, curr.right)
 
     def search_data_recursive(self, data, curr):
         if(curr == None):
@@ -44,114 +44,58 @@ class BinarySearchTree:
             print("Element {0} Found".format(data))
         else:
              print("Element {0} Not Found".format(data))
+    
 
-    def search_iterative(self, data):
-        curr = self.root
-        while(curr):
-            if(curr.data == data):
-                print("Element {0} Found".format(data))
-                break
-            elif(data < curr.data):
-                curr = curr.left
-            else:
-                curr = curr.right
-        if(curr == None):
-            print("Element {0} Not Found".format(data))
-
-    def minimum(self):
-        curr = self.root
-        while(curr):
-            if(curr.left == None):
-                print("Minimum element is ", curr.data)
-                break
-            curr = curr.left
-
-    def maximum(self):
-        curr = self.root
-        while(curr):
-            if(curr.right == None):
-                print("Maximum element is ", curr.data)
-                break
-            curr = curr.right
-
-
-    def display_inorder(self):
+    def display_inorder_recursive(self):
         print("In-Order Traversal")
-        self.display_data_inorder(self.root)
+        self.display_data_inorder_recursive(self.root)
         print()
     
-    def display_data_inorder(self, curr):
+    def display_data_inorder_recursive(self, curr):
         if(curr == None):
             return
-        self.display_data_inorder(curr.left)
+        self.display_data_inorder_recursive(curr.left)
         print("{0}-->".format(curr.data), end = "")
-        self.display_data_inorder(curr.right)  
+        self.display_data_inorder_recursive(curr.right)
 
-    def display_postorder(self):
+    def display_postorder_recursive(self):
         print("Post-Order Traversal")
-        self.display_data_postorder(self.root)
+        self.display_data_postorder_recursive(self.root)
         print()
 
-    def display_data_postorder(self, curr):
+    def display_data_postorder_recursive(self, curr):
         if(curr == None):
             return None
-        self.display_data_postorder(curr.left)
-        self.display_data_postorder(curr.right)
+        self.display_data_postorder_recursive(curr.left)
+        self.display_data_postorder_recursive(curr.right)
         print("{0}-->".format(curr.data), end = "")
 
-    def display_preorder(self):
+    def display_preorder_recursive(self):
         print("Pre-Order Traversal")
-        self.display_data_preorder(self.root)
+        self.display_data_preorder_recursive(self.root)
         print()
 
-    def display_data_preorder(self, curr):
+    def display_data_preorder_recursive(self, curr):
         if(curr ==  None):
             return None
         print("{0}-->".format(curr.data), end = "")
-        self.display_data_preorder(curr.left)
-        self.display_data_preorder(curr.right)
-
-
-
-
-
-
-
-
-        
+        self.display_data_preorder_recursive(curr.left)
+        self.display_data_preorder_recursive(curr.right)   
 
 obj = BinarySearchTree()
-obj.insert(16)
-obj.display_inorder()
-obj.insert(10)
-obj.display_inorder()
-obj.insert(15)
-obj.display_inorder()
-obj.insert(21)
-obj.display_inorder()
-obj.insert(7)
-obj.display_inorder()
-obj.insert(23)
-obj.display_inorder()
-obj.insert(27)
-obj.display_inorder()
-obj.insert(13)
-obj.display_inorder()
-obj.insert(14)
-obj.display_inorder()
-obj.insert(18)
-obj.display_inorder()
-obj.insert(25)
-obj.display_inorder()
-obj.insert(17)
-obj.display_inorder()
-obj.display_postorder()
-obj.display_preorder()
-'''
-obj.minimum()
-obj.maximum()
-obj.search_iterative(1)
-obj.search_iterative(8)
-obj.search_recursive(2)
-obj.search_recursive(8)
-'''
+obj.insert_recursive(16)
+obj.insert_recursive(10)
+obj.insert_recursive(15)
+obj.insert_recursive(21)
+obj.insert_recursive(7)
+obj.insert_recursive(23)
+obj.insert_recursive(27)
+obj.insert_recursive(13)
+obj.insert_recursive(14)
+obj.insert_recursive(18)
+obj.insert_recursive(25)
+obj.insert_recursive(17)
+obj.insert_recursive(8)
+obj.display_inorder_recursive()
+obj.display_postorder_recursive()
+obj.display_preorder_recursive()
