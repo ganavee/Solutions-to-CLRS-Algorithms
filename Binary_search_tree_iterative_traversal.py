@@ -12,7 +12,7 @@ class Binary_Search_Tree:
     def insert_iterative(self, data):
         if(self.root == None):
             self.root = Node(data)
-            self.display_inorder_iterative()
+            #self.display_inorder_iterative()
             return
         curr = self.root
         while(curr):
@@ -27,7 +27,7 @@ class Binary_Search_Tree:
             prev.left = Node(data)
         else:
             prev.right = Node(data)
-        self.display_inorder_iterative()
+        #self.display_inorder_iterative()
 
     def display_preorder_iterative(self):
         print("Iteratice Pre-Order Traversal")
@@ -44,6 +44,8 @@ class Binary_Search_Tree:
                 curr = curr.right
             else:
                 curr = stack.pop()
+        print()
+        print()
         
 
     def display_postorder_iterative(self):
@@ -62,9 +64,9 @@ class Binary_Search_Tree:
                 curr.visited = 1
                 curr = stack.pop()
         print()
+        print()
 
     def initialising_visit(self):
-        print("Iterative In-Order Traversal")
         curr = self.root
         stack = []
         #using one loop
@@ -79,7 +81,6 @@ class Binary_Search_Tree:
                 curr = curr.right
             else:
                 break
-        print()
         
     def display_inorder_iterative(self):
         print("Iterative In-Order Traversal")
@@ -96,6 +97,7 @@ class Binary_Search_Tree:
                 curr = curr.right
             else:
                 break
+        print()
         print()
                 
         #using two loops
@@ -120,7 +122,34 @@ class Binary_Search_Tree:
                 curr = curr.right
         '''
             
-        
+    def minimum(self):
+        curr = self.root
+        while(curr):
+            if(curr.left == None):
+                print("Minimum element is ", curr.data)
+                break
+            curr = curr.left
+
+    def maximum(self):
+        curr = self.root
+        while(curr):
+            if(curr.right == None):
+                print("Maximum element is ", curr.data)
+                break
+            curr = curr.right
+
+    def search_iterative(self, data):
+        curr = self.root
+        while(curr):
+            if(curr.data == data):
+                print("Element {0} Found".format(data))
+                break
+            elif(data < curr.data):
+                curr = curr.left
+            else:
+                curr = curr.right
+        if(curr == None):
+            print("Element {0} Not Found".format(data))
 
 obj = Binary_Search_Tree()
 obj.insert_iterative(16)
@@ -140,4 +169,7 @@ obj.display_inorder_iterative()
 obj.display_postorder_iterative()
 obj.initialising_visit()
 obj.display_preorder_iterative()
+obj.minimum()
+obj.maximum()
+obj.search_iterative(16)
 
