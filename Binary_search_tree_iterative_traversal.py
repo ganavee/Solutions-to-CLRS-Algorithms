@@ -29,6 +29,7 @@ class Binary_Search_Tree:
             prev.right = Node(data)
         #self.display_inorder_iterative()
 
+    
     def display_preorder_iterative(self):
         print("Iteratice Pre-Order Traversal")
         stack = [None]
@@ -151,6 +152,28 @@ class Binary_Search_Tree:
         if(curr == None):
             print("Element {0} Not Found".format(data))
 
+    def predecessor(self, elem):
+        prev = None
+        curr = self.root
+        stack = []
+        while(True):
+            if(curr != None):
+                stack.append(curr)
+                curr = curr.left
+            elif(len(stack) != 0):
+                curr = stack.pop()
+                if(curr.data ==  elem):
+                    if(prev != None):
+                        print("Predecessor of {0} is {1}".format(elem, prev.data))
+                    else:
+                        print("Predecessor of {0} is Not Present".format(elem))
+                    break
+                prev = curr
+                curr = curr.right
+            else:
+                break
+        
+
 obj = Binary_Search_Tree()
 obj.insert_iterative(16)
 obj.insert_iterative(10)
@@ -172,4 +195,5 @@ obj.display_preorder_iterative()
 obj.minimum()
 obj.maximum()
 obj.search_iterative(16)
+obj.predecessor(7)
 
