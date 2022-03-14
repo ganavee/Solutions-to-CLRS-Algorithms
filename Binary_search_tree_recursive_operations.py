@@ -80,7 +80,25 @@ class BinarySearchTree:
             return None
         print("{0}-->".format(curr.data), end = "")
         self.display_data_preorder_recursive(curr.left)
-        self.display_data_preorder_recursive(curr.right)   
+        self.display_data_preorder_recursive(curr.right)
+
+    def maximum_data_recursive(self, curr):
+        if(curr.right != None):
+            return self.maximum_data_recursive(curr.right)
+        else:
+            return curr.data
+
+    def maximum_recursive(self):
+        print("Maximum element is ", self.maximum_data_recursive(self.root))
+
+    def minimum_recursive(self):
+         print("Minimum element is ", self.minimum_data_recursive(self.root))
+
+    def minimum_data_recursive(self, curr):
+        if(curr.left != None):
+            return self.minimum_data_recursive(curr.left)
+        else:
+            return curr.data
 
 obj = BinarySearchTree()
 obj.insert_recursive(16)
@@ -99,3 +117,5 @@ obj.insert_recursive(8)
 obj.display_inorder_recursive()
 obj.display_postorder_recursive()
 obj.display_preorder_recursive()
+obj.maximum_recursive()
+obj.minimum_recursive()
