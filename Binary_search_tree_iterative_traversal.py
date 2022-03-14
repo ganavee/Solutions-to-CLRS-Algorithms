@@ -174,7 +174,24 @@ class Binary_Search_Tree:
                 print("Predecessor of {0} is Not Present".format(elem))
                 break
 
-        
+    def successor(self, elem):
+        prev = None
+        curr = self.root
+        stack = []
+        while(True):
+            if(curr != None):
+                stack.append(curr)
+                curr = curr.left
+            elif(len(stack) != 0):
+                curr = stack.pop()
+                if(prev != None and prev.data == elem):
+                    print("Sucessor or {0} is {1}".format(elem, curr.data))
+                    break
+                prev = curr
+                curr = curr.right
+            else:
+                print("Successor of {0} is Not Present".format(elem))
+                break
         
 
 obj = Binary_Search_Tree()
@@ -199,4 +216,5 @@ obj.minimum()
 obj.maximum()
 obj.search_iterative(16)
 obj.predecessor(11)
+obj.successor(11)
 
