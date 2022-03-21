@@ -186,13 +186,32 @@ class Binary_Search_Tree:
                 curr = stack.pop()
                 if(prev != None and prev.data == elem):
                     print("Sucessor or {0} is {1}".format(elem, curr.data))
+                    return curr
                     break
                 prev = curr
                 curr = curr.right
             else:
                 print("Successor of {0} is Not Present".format(elem))
                 break
-        
+
+    def has_child(self, elem):
+        curr = self.root
+        while(curr):
+            if(elem == curr.data):
+                if(curr.right != None):
+                    print("{0} has a right child {1}".format(elem, curr.right.data))
+                    return(curr.right, succ)
+                elif(curr.left != None):
+                    print("{0} has a left child {1}".format(elem, curr.left.data))
+                    return curr.left
+                else:
+                    print("{0} does not have a child".format(elem))
+                    return None
+                break
+            elif(elem < curr.data):
+                curr = curr.left
+            else:
+                curr = curr.right
 
 obj = Binary_Search_Tree()
 obj.insert_iterative(16)
@@ -202,13 +221,23 @@ obj.insert_iterative(23)
 obj.insert_iterative(18)
 obj.insert_iterative(15)
 obj.insert_iterative(7)
-obj.insert_iterative(27)
+obj.insert_iterative(25)
+obj.insert_iterative(35)
 obj.insert_iterative(13)
 obj.insert_iterative(14)
-obj.insert_iterative(25)
+obj.insert_iterative(24)
+obj.insert_iterative(30)
+obj.insert_iterative(29)
+obj.insert_iterative(65)
+obj.insert_iterative(72)
+obj.insert_iterative(63)
+obj.insert_iterative(26)
+obj.insert_iterative(28)
+obj.insert_iterative(27)
 obj.insert_iterative(17)
 obj.insert_iterative(8)
 obj.display_inorder_iterative()
+obj.has_child(27)
 obj.display_postorder_iterative()
 obj.initialising_visit()
 obj.display_preorder_iterative()
@@ -217,4 +246,5 @@ obj.maximum()
 obj.search_iterative(16)
 obj.predecessor(11)
 obj.successor(11)
+
 
