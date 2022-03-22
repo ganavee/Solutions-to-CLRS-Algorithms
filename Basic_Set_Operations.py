@@ -2,6 +2,7 @@ a = [15, 25, 35, 45, 5, 5, 25]
 b = [45, 5, 65, 75, 85, 75,45]
 a = [1, 2, 3]
 b = [1, 5, 7, 8, 2, 3, 10]
+d = [3, 4, 2, 2, 1, 2, 10]
 
 def intersection_using_dic():
     D1 = {}
@@ -88,6 +89,15 @@ def superset():
         if(len(D1.keys()) >= len(a)):
             print("B is superset of A")
 
+def remove_duplicates():
+    D = {}
+    for i in d:
+        D[i] = 1
+    lst = []
+    for keys in D.keys():
+        lst.append(keys)
+    print("After removing duplicates ", lst)
+
 intersection_using_dic()
 union_using_dic()
 difference()
@@ -95,3 +105,4 @@ symmetric_difference()
 disjoint()
 subset()
 superset()
+remove_duplicates()
