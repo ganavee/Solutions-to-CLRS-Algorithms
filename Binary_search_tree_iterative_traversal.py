@@ -152,7 +152,7 @@ class Binary_Search_Tree:
         if(curr == None):
             print("Element {0} Not Found".format(data))
 
-    def predecessor(self, elem):
+    def inorder_predecessor(self, elem):
         prev = None
         curr = self.root
         stack = []
@@ -164,15 +164,46 @@ class Binary_Search_Tree:
                 curr = stack.pop()
                 if(curr.data ==  elem):
                     if(prev != None):
-                        print("Predecessor of {0} is {1}".format(elem, prev.data))
+                        print("Inorder Predecessor of {0} is {1}".format(elem, prev.data))
                     else:
-                        print("Predecessor of {0} is Not Present".format(elem))
+                        print("Inorder Predecessor of {0} is Not Present".format(elem))
                     break
                 prev = curr
                 curr = curr.right
             else:
-                print("Predecessor of {0} is Not Present".format(elem))
+                print("Inorder Predecessor of {0} is Not Present".format(elem))
                 break
+
+    def postorder_predecessor(self, elem):
+        curr = self.root
+        prev = None
+        nextt = None
+        stack = [curr]
+        while(len(stack)):
+            curr = stack.pop()
+            if(curr):
+                if(prev == elem):
+                    print("Postorder Predecessor of {0} is {1}".format(elem, curr.data))
+                    break
+                prev = curr.data
+                stack.append(curr.left)
+                stack.append(curr.right)
+        if(curr == None):
+            print("Postorder Predecessor of {0} is {1}".format(elem, curr))
+
+    def preorder_predecessor(self, elem):
+        curr = self.root
+        prev = None
+        stack = [curr]
+        while(len(stack)):
+            curr = stack.pop()
+            if(curr):
+                if(curr.data == elem):
+                    print("Preorder Predecessor of {0} is {1}".format(elem, prev))
+                    break
+                prev = curr.data
+                stack.append(curr.right)
+                stack.append(curr.left)
 
     def successor(self, elem):
         prev = None
@@ -196,22 +227,54 @@ class Binary_Search_Tree:
 
     def has_child(self, elem):
         curr = self.root
+        parent = None
         while(curr):
             if(elem == curr.data):
                 if(curr.right != None):
-                    print("{0} has a right child {1}".format(elem, curr.right.data))
-                    return(curr.right, succ)
+                    #find the sucessor and return sucessor and the right child
+                    succ = self.successor(elem)
+                    #print("{0} has a right child {1}".format(elem, curr.right.data))
+                    return(curr.right, succ, parent, True, parent_child_direction, curr.left)
                 elif(curr.left != None):
                     print("{0} has a left child {1}".format(elem, curr.left.data))
-                    return curr.left
+                    return(curr.left, None, parent, False, parent_child_direction, None)
                 else:
                     print("{0} does not have a child".format(elem))
-                    return None
+                    return(None, None, parent, None, parent_child_direction)
                 break
             elif(elem < curr.data):
+                parent = curr
+                parent_child_direction = "left"
                 curr = curr.left
             else:
+                parent = curr
+                parent_child_direction = "right"
                 curr = curr.right
+
+    def delete(self, elem):
+        child_node, succ, parent, right, parent_child_direction, curr_left_child= self.has_child(elem)
+        if(right == True):
+            print("Node {0} has right child node as {1} its parent as {2} and successor as {3}".format(elem, child_node.data, parent.data, succ.data))
+            if(succ == child_node):
+                parent.right = succ
+                child_node.left = curr_left_child
+            else:
+                pass
+        elif(right == False):
+            print("Node {0} has left child node as {1} and its parent as {2}".format(elem, child_node.data, parent.data))
+            if(parent_child_direction == "right"):
+                parent.right = child_node
+            else:
+                parent.left = child_node
+        else:
+            if(parent_child_direction == "right"):
+                parent.right = child_node
+            else:
+                parent.left = child_node
+        print("After deleting {0}".format(elem))
+        self.display_inorder_iterative()
+        
+        
 
 obj = Binary_Search_Tree()
 obj.insert_iterative(16)
@@ -237,6 +300,13 @@ obj.insert_iterative(27)
 obj.insert_iterative(17)
 obj.insert_iterative(8)
 obj.display_inorder_iterative()
+obj.display_postorder_iterative()
+obj.display_preorder_iterative()
+obj.inorder_predecessor(7)
+obj.postorder_predecessor(16)
+obj.preorder_predecessor(72)
+#obj.delete(21)
+'''
 obj.has_child(27)
 obj.display_postorder_iterative()
 obj.initialising_visit()
@@ -246,5 +316,5 @@ obj.maximum()
 obj.search_iterative(16)
 obj.predecessor(11)
 obj.successor(11)
-
+'''
 
