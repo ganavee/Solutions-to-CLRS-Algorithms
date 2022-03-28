@@ -122,6 +122,48 @@ class Binary_Search_Tree:
             if(curr and curr.right != None):
                 curr = curr.right
         '''
+
+    def display_inorder(self):
+        curr = self.root
+        stack = []
+        lst = []
+        while(True):
+            if(curr):
+                stack.append(curr)
+                curr = curr.left
+            elif(len(stack)):
+                curr = stack.pop()
+                lst.append(curr.data)
+                curr = curr.right
+            else:
+                break
+        print("INORDER TRAVERSAL", lst)
+                
+
+    def display_postorder(self):
+        curr = self.root
+        stack = [curr]
+        lst = []
+        while(len(stack)):
+            curr = stack.pop()
+            if(curr):
+                lst.append(curr.data)
+                stack.append(curr.left)
+                stack.append(curr.right)
+        print("POSTORDER TRAVERSAL ", lst[::-1])
+        pass
+
+    def display_preorder(self):
+        curr = self.root
+        stack = [curr]
+        lst = []
+        while(len(stack)):
+            curr = stack.pop()
+            if(curr):
+                lst.append(curr.data)
+                stack.append(curr.right)
+                stack.append(curr.left)
+        print("PREORDER TRAVERSAL ", lst)
             
     def minimum(self):
         curr = self.root
@@ -330,13 +372,16 @@ obj.insert_iterative(17)
 obj.insert_iterative(8)
 
 obj.display_postorder_iterative()
+obj.display_postorder()
 obj.postorder_predecessor(7)
 obj.postorder_successor(24)
 obj.initialising_visit()
 obj.display_preorder_iterative()
+obj.display_preorder()
 obj.preorder_predecessor(16)
 obj.preorder_successor(24)
 obj.display_inorder_iterative()
+obj.display_inorder()
 obj.inorder_predecessor(7)
 obj.inorder_successor(24)
 
