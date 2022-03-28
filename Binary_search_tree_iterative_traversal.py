@@ -205,25 +205,6 @@ class Binary_Search_Tree:
                 stack.append(curr.right)
                 stack.append(curr.left)
 
-    def successor(self, elem):
-        prev = None
-        curr = self.root
-        stack = []
-        while(True):
-            if(curr != None):
-                stack.append(curr)
-                curr = curr.left
-            elif(len(stack) != 0):
-                curr = stack.pop()
-                if(prev != None and prev.data == elem):
-                    print("Sucessor or {0} is {1}".format(elem, curr.data))
-                    return curr
-                    break
-                prev = curr
-                curr = curr.right
-            else:
-                print("Successor of {0} is Not Present".format(elem))
-                break
 
     def has_child(self, elem):
         curr = self.root
@@ -273,6 +254,54 @@ class Binary_Search_Tree:
                 parent.left = child_node
         print("After deleting {0}".format(elem))
         self.display_inorder_iterative()
+
+    def inorder_successor(self, elem):
+        curr = self.root
+        stack = []
+        prev = None
+        while(len(stack) or curr):
+            if(curr):
+                stack.append(curr)
+                curr = curr.left
+            elif(len(stack)):
+                curr = stack.pop()
+                if(prev == elem):
+                    print("Inorder Successor of {0} is {1}".format(elem, curr.data))
+                    break
+                prev = curr.data
+                curr = curr.right
+        if(curr == None):
+            print("Inorder Successor of {0} is Not present".format(elem))
+
+    def postorder_successor(self, elem):
+        curr = self.root
+        stack = [curr]
+        prev = None
+        while(len(stack)):
+            curr = stack.pop()
+            if(curr):
+                if(elem == curr.data):
+                    print("Postorder Successor of {0} is {1}".format(elem, prev))
+                    break
+                prev = curr.data
+                stack.append(curr.left)
+                stack.append(curr.right)
+
+    def preorder_successor(self, elem):
+        curr = self.root
+        stack = [curr]
+        prev = None
+        while(len(stack)):
+            curr = stack.pop()
+            if(curr):
+                if(prev == elem):
+                    print("Preorder Successor of {0} is {1}".format(elem, curr.data))
+                    break
+                prev = curr.data    
+                stack.append(curr.right)
+                stack.append(curr.left)
+        if(curr ==  None):
+            print("Preorder Successor of {0} is {1}".format(elem, curr))
         
         
 
@@ -299,12 +328,19 @@ obj.insert_iterative(28)
 obj.insert_iterative(27)
 obj.insert_iterative(17)
 obj.insert_iterative(8)
-obj.display_inorder_iterative()
+
 obj.display_postorder_iterative()
+obj.postorder_predecessor(7)
+obj.postorder_successor(24)
+obj.initialising_visit()
 obj.display_preorder_iterative()
+obj.preorder_predecessor(16)
+obj.preorder_successor(24)
+obj.display_inorder_iterative()
 obj.inorder_predecessor(7)
-obj.postorder_predecessor(16)
-obj.preorder_predecessor(72)
+obj.inorder_successor(24)
+
+
 #obj.delete(21)
 '''
 obj.has_child(27)
