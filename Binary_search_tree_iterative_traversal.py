@@ -344,6 +344,28 @@ class Binary_Search_Tree:
                 stack.append(curr.left)
         if(curr ==  None):
             print("Preorder Successor of {0} is {1}".format(elem, curr))
+
+    def breadth_first_search(self):
+        curr = self.root
+        queue = [curr]
+        enqueue = 0
+        dequeue = 0
+        lst = []
+        dummy = [curr.data]
+        while(dequeue <= enqueue):
+            curr = queue[dequeue]
+            dequeue += 1
+            if(curr):
+                lst.append(curr.data)
+                if(curr.left):
+                    queue.append(curr.left)
+                    dummy.append(curr.left.data)
+                    enqueue += 1
+                if(curr.right):
+                    queue.append(curr.right)
+                    dummy.append(curr.right.data)
+                    enqueue += 1
+        print("BFS TRAVERSAL ", lst)
         
         
 
@@ -385,7 +407,7 @@ obj.display_inorder()
 obj.inorder_predecessor(7)
 obj.inorder_successor(24)
 
-
+obj.breadth_first_search()
 #obj.delete(21)
 '''
 obj.has_child(27)
