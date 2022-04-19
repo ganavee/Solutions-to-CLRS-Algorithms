@@ -49,15 +49,30 @@ class Tree:
         curr = self.head
         queue = [curr]
         heap = []
+        level = 0
+        level_nodes = 2**level
+        nodes_count = 0
+        none_nodes = 0
         while(len(queue)):
             curr = queue.pop(0)
+            nodes_count += 1
             if(curr == None):
+                none_nodes += 1
                 heap.append('-')
+                queue.append(None)
+                queue.append(None)
             else:
                 heap.append(curr.data)
-                if(curr.left != None or curr.right != None):
-                    queue.append(curr.left)
-                    queue.append(curr.right)
+                #if(curr.left != None or curr.right != None):
+                queue.append(curr.left)
+                queue.append(curr.right)
+            if(nodes_count == level_nodes):
+                if(none_nodes == level_nodes):
+                    break
+                level += 1
+                nodes_count = 0
+                level_nodes = 2**level
+                none_nodes = 0
         while(True):
             if(heap[-1] == '-'):
                 heap.pop()
