@@ -58,6 +58,11 @@ class Tree:
                 if(curr.left != None or curr.right != None):
                     queue.append(curr.left)
                     queue.append(curr.right)
+        while(True):
+            if(heap[-1] == '-'):
+                heap.pop()
+            else:
+                break
         print("Heap representation of tree ", heap)
 
 obj = Tree()
