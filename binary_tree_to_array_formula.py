@@ -8,6 +8,7 @@ class Node:
 class Tree:
     def __init__(self):
         self.head = None
+        self.heap = []
 
 
     def insert(self, data):
@@ -48,7 +49,6 @@ class Tree:
     def print_heap(self):
         curr = self.head
         queue = [curr]
-        heap = []
         level = 0
         level_nodes = 2**level
         nodes_count = 0
@@ -58,11 +58,11 @@ class Tree:
             nodes_count += 1
             if(curr == None):
                 none_nodes += 1
-                heap.append('-')
+                self.heap.append('-')
                 queue.append(None)
                 queue.append(None)
             else:
-                heap.append(curr.data)
+                self.heap.append(curr.data)
                 #if(curr.left != None or curr.right != None):
                 queue.append(curr.left)
                 queue.append(curr.right)
@@ -73,12 +73,50 @@ class Tree:
                 nodes_count = 0
                 level_nodes = 2**level
                 none_nodes = 0
+        '''
         while(True):
-            if(heap[-1] == '-'):
-                heap.pop()
+            if(self.heap[-1] == '-'):
+                self.heap.pop()
             else:
                 break
-        print("Heap representation of tree ", heap)
+        '''
+        print("Heap representation of tree ", self.heap)
+
+    def find_leftchild(self, elem):
+        for i in range(len(self.heap)):
+            if(elem == self.heap[i]):
+                left_child = self.heap[2*i + 1]
+                if(left_child == '-'):
+                    print("Left Child of {0} is not present".format(elem))
+                else:
+                    print("Left child of {0} is {1}".format(elem, left_child))
+                break
+        else:
+            print("Element {0} is not present".format(elem))
+
+    def find_rightchild(self, elem):
+        for i in range(len(self.heap)):
+            if(elem == self.heap[i]):
+                right_child = self.heap[2*i + 2]
+                if(right_child == '-'):
+                    print("Right child of {0} is not present".format(elem))
+                else:
+                    print("Right child of {0} is {1}".format(elem, right_child))
+                break
+        else:
+            print("Element {0} not present".format(elem))
+
+    def find_parent(self, elem):
+        for i in range(len(self.heap)):
+            if(elem == self.heap[i]):
+                if(i%2 == 0):
+                    parent = self.heap[i//2 - 1]
+                else:
+                    parent = self.heap[i//2]
+                print("Parent of {0} is {1}".format(elem, parent))
+                break
+        else:
+            print("Element {0} not present".format(elem))
 
 obj = Tree()
 obj.insert(16)
@@ -94,5 +132,8 @@ obj.insert(24)
 obj.insert(14)
 obj.inorder_traversal()
 obj.print_heap()
+obj.find_leftchild(21)
+obj.find_rightchild(10)
+obj.find_parent(29)
 
 
