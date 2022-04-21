@@ -9,6 +9,7 @@ class Tree:
     def __init__(self):
         self.head = None
         self.max_heap = []
+        self.heap_sort = []
         
     #Inserting using the array
     def insert(self, data):
@@ -61,13 +62,15 @@ class Tree:
     def delete(self):
         #Replace root node with last node
         length = len(self.max_heap) - 1
+        self.heap_sort.append(self.max_heap[0])
+        #print("Heap_sort ", self.heap_sort)
         self.max_heap[0] = self.max_heap[length]
         
         #Remove the last node
         self.max_heap.pop()
         length -= 1
         #print("After replacing deleting {0} length {1}".format(self.max_heap, length))
-        #Find the correct position for root node
+        #Find the correct position for new root node
         parent = 0
         while(True): 
             left_child = 2*parent + 1
@@ -76,7 +79,10 @@ class Tree:
                 break
             elif(left_child == length):
                 if(self.max_heap[left_child] > self.max_heap[parent]):
-                    swap
+                    swap = self.max_heap[parent]
+                    self.max_heap[parent] = self.max_heap[left_child]
+                    self.max_heap[left_child] = swap
+                    parent = left_child
                 else:
                     break
             else:
@@ -98,6 +104,7 @@ class Tree:
                         break
         print("After deleting  root element from Max heap array = ", self.max_heap)
         print()
+        return
 
     def display_dfs(self):
         curr = self.head
@@ -111,6 +118,11 @@ class Tree:
             curr = queue.pop(0)
         print("BFS traversal of the Tree", bfs)
         print()
+
+    def heap_sorting(self):
+        while(len(self.max_heap)):
+            self.delete()
+        print("Sorting elements using heap sort ", self.heap_sort)
 
 
 obj = Tree()
@@ -129,6 +141,8 @@ obj.insert(70)
 #obj.insert(45)
 obj.convert_array_to_tree()
 obj.display_dfs()
-obj.delete()
-obj.convert_array_to_tree()
-obj.display_dfs()
+#obj.delete()
+#obj.convert_array_to_tree()
+#obj.display_dfs()
+obj.heap_sorting()
+
