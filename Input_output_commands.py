@@ -9,19 +9,21 @@ class inputs:
     def input_readline(self):
         #4 2 3 2 1 4
     #using readline
-        print("Enter input")
-        x = sys.stdin.readline()
-        print("Input is {0}type is {1}".format(x, type(x)))
-        x = list(map(int, x.strip().split()))
-        print("After list ", x)
-        print(x[:2])
-        n, m = x[:2]
-        print("n = {0} m = {1} type of n {2}".format(n, m, type(n)))
-        x = x[2:]
-        print("remaining numbers ", x)
-        print("1 ", x[0::2])
-        print("2 ", x[1::2])
-        
+        input = sys.stdin.readline()
+        print("input from console ", input)
+        input = list(map(int, input.strip().split()))
+        print("input from modification ", input)
+        vertices, tot_edges = input[:2]
+        print("Number of veritces {0} \nNumber of edges {1}".format(vertices, tot_edges))
+        input = input[2:]
+        print("input from trimming ", input)
+        edges = list(zip(input[0:-2:2], input[1:-2:2]))
+        print("edges list ", edges)
+        adj = [[] for i in range(vertices)]
+        for (u,v) in edges:
+            adj[u-1].append(v-1)
+            adj[v-1].append(u-1)
+        print("Adjacency list ",adj)
 
 
 obj = inputs()
