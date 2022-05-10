@@ -9,17 +9,17 @@ class Graph:
         self.queue = []
 
     def dfs_algo(self):
-        print("Entering dfs_algo lenght = ", len(self.queue))
+        #print("Entering dfs_algo lenght = ", len(self.queue))
         if(len(self.queue) != 0):
             popped = self.queue.pop()
-            print("After popping ", self.queue)
+            #print("After popping ", self.queue)
             if(self.visited[popped] == 0):
                 self.visited[popped] = 1
                 self.dfs.append(popped)
                 for i in self.adj[popped]:
                     if i is not None:
                         self.queue.append(i)
-                print("Queue = {0} DFS = {1} len{2}".format(self.queue, self.dfs, len(self.queue)))
+                #print("Queue = {0} DFS = {1} len{2}".format(self.queue, self.dfs, len(self.queue)))
                 self.dfs_algo()
             else:
                 self.dfs_algo()
@@ -27,9 +27,14 @@ class Graph:
             return
 
     def recursive_depth_first_search(self):
-        self.queue.append(0)
-        self.dfs_algo()
-        print("DFS for single component Graph ", self.dfs)
+        for i in range(self.vertices):
+            if(self.visited[i] == 0):
+                self.queue.append(i)
+                self.dfs_algo()
+                print("DFS for single component Graph ", self.dfs)
+                self.dfs = []
+            else:
+                continue
             
                 
         
