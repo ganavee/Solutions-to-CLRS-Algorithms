@@ -6,5 +6,5 @@ def count(n, tot):
     return count(n//10, tot)
     pass
 
-num = 0
+num = 2050060
 print("Number of zeros in {0} is {1}".format(num, count(num, 0)))
