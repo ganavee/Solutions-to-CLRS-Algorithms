@@ -12,7 +12,6 @@ class pattern2:
         if(column == row):
             self.solve(row-1, 0)
             print()
-            pass
         else:
             self.solve(row, column+1)
             print("*", end = " ")
