@@ -1,5 +1,5 @@
 import sys
-class Selection_sort:
+class Searching:
     def search(self, string, char):
         for i in string:
             if(i == char):
@@ -17,5 +17,5 @@ class Selection_sort:
         
 
 
-obj = Selection_sort()
+obj = Searching()
 obj.input()
