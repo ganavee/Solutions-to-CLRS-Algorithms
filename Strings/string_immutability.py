@@ -4,10 +4,21 @@ p = "Ganavi"
 q = "Jayaram"
 print("id of s = {0} id of p = {1} id of q = {2}".format(id(s), id(p), id(q)))
 
+
 #To create different objects with same value
 a = "Ganavi"
 b = a.encode().decode()
 print("id of a = {0} id of b = {1}".format(id(a), id(b)))
+
+if(a is b):
+    print("a and b are Same objects")
+else:
+    print("a and b are Different objects")
+
+if(a == b):
+    print("a and b have Same values")
+else:
+    print("a and b have Different values")
 
 #Strings immutablity
 
