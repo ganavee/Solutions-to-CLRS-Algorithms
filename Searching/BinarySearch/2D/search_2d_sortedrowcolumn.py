@@ -1,10 +1,10 @@
 import sys
 
 class Search:
-    def solution(self, n, matrix, target):
+    def solution(self, matrix, target):
         row = 0
-        col = n-1
-        while(col>-1 and row < n):
+        col = len(matrix[0])-1
+        while(col>-1 and row < len(matrix)):
             if(target == matrix[row][col]):
                 print("Element Found at ", end = " ")
                 return ([row, col])
@@ -18,7 +18,8 @@ class Search:
     
     def input(self):
         print("Enter the order of the matrix")
-        n = int(sys.stdin.readline().strip())
+        order = list(map(int, ((sys.stdin.readline().strip().split()))))
+        n, m = order[:2]
         print("Enter the target")
         target = int(sys.stdin.readline().strip())
         print("Enter 2D array")
@@ -28,11 +29,12 @@ class Search:
         start = 0
         
         for i in range(n):
-            x = input[start:start+n]
+            x = input[start:start+m]
             matrix.append(x)
-            start += n
-        print("n = {0} Matrix = {1}".format(n, matrix))
-        print(self.solution(n, matrix, target))
+            start += m
+        print("n = {0} m = {1} Matrix = {2}".format(n, m, matrix))
+        print(self.solution(matrix, target))
+        
         
         
 obj = Search()
