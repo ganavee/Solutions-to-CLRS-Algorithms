@@ -144,7 +144,7 @@ class Doubly_list:
             self.delete_pos(counter+1)
             return
 
-    def reverse(self):
+    def display_reverse(self):
         temp = self.tail
         while(temp != None):
             print("{0}-->".format(temp.val), end ="")
@@ -195,7 +195,7 @@ while(True):
         if(option == "1"):
             obj.display()
         elif(option == "2"):
-            obj.reverse()
+            obj.display_reverse()
         else:
             print("Please send valid option")
         
