@@ -149,7 +149,7 @@ class Doubly_list:
         while(temp != None):
             print("{0}-->".format(temp.val), end ="")
             temp = temp.prev
-        print("END")
+        print("START")
         print("Total number of nodes  = ", self.count)
 
 
