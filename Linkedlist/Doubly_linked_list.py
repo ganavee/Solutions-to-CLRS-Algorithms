@@ -144,6 +144,15 @@ class Doubly_list:
             self.delete_pos(counter+1)
             return
 
+    def reverse(self):
+        temp = self.tail
+        while(temp != None):
+            print("{0}-->".format(temp.val), end ="")
+            temp = temp.prev
+        print("END")
+        print("Total number of nodes  = ", self.count)
+
+
 obj = Doubly_list()
 while(True):
     print("Enter \n1. To Terminate\n2. To Enter data \n3. To Delete\n4. To Display")
@@ -181,7 +190,15 @@ while(True):
             print("Enter Valid Number")
         obj.display()
     elif(val == "4"):
-        obj.display()
+        print("Enter \n1. To Print first to last \n2. To Print reverse order")
+        option = sys.stdin.readline().strip()
+        if(option == "1"):
+            obj.display()
+        elif(option == "2"):
+            obj.reverse()
+        else:
+            print("Please send valid option")
+        
     else:
         print("Please enter valid Number")
 
