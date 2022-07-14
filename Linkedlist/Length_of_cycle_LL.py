@@ -30,15 +30,15 @@ class Singly_list:
             slow = slow.next
             fast = fast.next.next
             if(slow == fast):
-                temp = slow
-                break
-        slow = slow.next
-        count = 1
-        print("Hey")
-        while(slow != temp):
-            count += 1
-            slow = slow.next
-        print("Length of cycle in Linked List ", count)
+                slow = slow.next
+                count = 1
+                while(slow != fast):
+                    count += 1
+                    slow = slow.next
+                return print("Length of cycle in Linked List ", count)
+                
+        return print("Length of Cycle = 0")
+        
         pass
         
     def display(self, head):
@@ -57,7 +57,7 @@ temp = node
 head1, node = obj.insert(23)
 head1, node = obj.insert(29)
 head1, node = obj.insert(87)
-head1, node = obj.insert(5, temp)
+#head1, node = obj.insert(5, temp)
 print("List1")
 obj.length_of_cycle()
 #obj.display(head1)
