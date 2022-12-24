@@ -1,5 +1,7 @@
 import sys
 
+#Select Maximum/minimum element and put it into its right position
+
 class Selection_sort:
     def sort_ascending(self, arr):
         sorting_index =len(arr)-1
