@@ -13,6 +13,25 @@ def subset(s, processed):
     return res
 
 
+def iterative(s):
+    res = [[]]
+    for i in s:
+        res1 = []
+        res1.extend(res)
+        print("res1 before = ", res1)
+        for j in res:
+            print("j before = ", j)
+            temp = []
+            temp.extend(j)
+            temp.append(i)
+            print("j after = ", j)
+            res1.append(temp)
+            print("res1 after ",res1)
+        res = res1
+        print("res = ", res)
+    print(res)
+
 
 s = "abc"
-print(subset(s, ""))
+#print(subset(s, ""))
+iterative(s)
