@@ -32,6 +32,9 @@ def iterative(s):
     print(res)
 
 
+def duplicate(s):
+    pass
+
 s = "abc"
 #print(subset(s, ""))
 iterative(s)
