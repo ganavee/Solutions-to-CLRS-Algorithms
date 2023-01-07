@@ -1,7 +1,8 @@
 #Find all the permutations of the given string
 
 
-def permutations(s, processed, res):
+def permutations(s, processed):
+    res = []
     if(s == ""):
         res.append(processed)
         return res
@@ -10,7 +11,8 @@ def permutations(s, processed, res):
     
     for pos in range(len(processed) + 1):
         string = processed[0:pos] + char + processed[pos:]
-        res = permutations(s[1:], string, res)
+        result = permutations(s[1:], string)
+        res.extend(result)
     return res 
         
 
@@ -18,8 +20,8 @@ def permutations(s, processed, res):
     
 
 
-s = "abcd"
+s = "abc"
 res = []
-print(recursive(s, "", res, 0))
+print(permutations(s, ""))
 
 
