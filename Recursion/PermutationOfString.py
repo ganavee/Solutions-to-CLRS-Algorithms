@@ -1,27 +1,14 @@
-#Find all the permutations of the given string
+def permute(subString, string, result):
+    if(len(string) == 0):
+        result.append(subString)
+        return result
+    for i in range(len(string)):
+        permute(subString + string[i], string[0:i] + string[i+1:], result)
+    del string
+    del subString
+    return result
 
 
-def permutations(s, processed):
-    res = []
-    if(s == ""):
-        res.append(processed)
-        return res
-    
-    char = s[0]
-    
-    for pos in range(len(processed) + 1):
-        string = processed[0:pos] + char + processed[pos:]
-        result = permutations(s[1:], string)
-        res.extend(result)
-    return res 
-        
-
-
-    
-
-
-s = "abc"
-res = []
-print(permutations(s, ""))
-
-
+string = "abcd"
+result = []
+print("Result = ", permute("", string, result))
