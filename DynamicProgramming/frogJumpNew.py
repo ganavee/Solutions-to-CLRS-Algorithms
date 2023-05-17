@@ -5,6 +5,30 @@ from math import *
 
 from typing import *
 
+#Space optimisation
+def frog3(arr, n, dp):
+    first = 0
+    if(n >= 1):
+        second = abs(arr[0] - arr[1])
+
+    for i in range(2, n):
+        temp = min(second+abs(arr[i] - arr[i-1]), 
+                first+abs(arr[i] - arr[i-2]))
+        first = second
+        second = temp
+    return second
+
+#TABULATION
+def frog2(arr, n, dp):
+    dp[0] = 0
+    if(n >= 1):
+        dp[1] = abs(arr[0] - arr[1])
+
+    for i in range(2, n):
+        dp[i] = min(dp[i-1]+abs(arr[i] - arr[i-1]), 
+                dp[i-2]+abs(arr[i] - arr[i-2]))
+    return dp[n-1]
+
 #Memoization
 def frog(arr, n, dp):
     if(n == 0):
@@ -43,7 +67,15 @@ def rec(currStep, n, heights, minEnergy, currEnergy):
 
 def frogJump1(n, heights):
     #dp = [-1 for i in range(n+1)]
-    print(f"Solution1: {rec(0, n, heights, maxsize, 0)}")
+    print(f"Solution Recursive: {rec(0, n, heights, maxsize, 0)}")
 
 height = [7, 4, 4, 2, 6, 6, 3, 4] 
-print(f"Solution2: {frogJump(len(height), height)}")
+print(f"Solution memo: {frogJump(len(height), height)}")
+
+n = len(height)
+dp = [-1 for i in range(n)]
+print(f"Solution Tabulation: {frog2(height, n, dp)}")
+
+n = len(height)
+dp = [-1 for i in range(n)]
+print(f"Solution Space Optimisation: {frog3(height, n, dp)}")
